@@ -1,0 +1,22 @@
+Mastermind game you only have 12 turns to guess the code correctly.
+
+Assigment rules: 
+
+Think about how you would set this problem up!
+
+Build the game assuming the computer randomly selects the secret colors and the 
+human player must guess them. Remember that you need to give the proper feedback
+on how good the guess was each turn!
+
+ok, En mastermind original se decide cuantos turnos se juegan, en este caso serian
+12, La computadora escojeria un "codigo" de 6 colores diferentes, la idea 
+es que el codigo sea aleatorio pero que provenga de esos 6 colores el codigo 
+como tal solo ocuparia 4 espacios, Osea un codigo de 4 basado en 6 colores 
+distintos, luego el codebreaker(el jugador) trata de adivinar el codigo
+dependiendo de cuantas partes del codigo se adivine se puede dar pistas para 
+saber si está cerca, puede ser un puts con algo significativo.
+
+las Llaves serian los colores blanco y negro, las llaves negras indican, que 
+el codigo está correcto en el luegar y color, las llaves blancas indican 
+color correcto pero puesto equivocado.
+
