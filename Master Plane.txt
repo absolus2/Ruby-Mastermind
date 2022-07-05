@@ -17,6 +17,6 @@ dependiendo de cuantas partes del codigo se adivine se puede dar pistas para
 saber si está cerca, puede ser un puts con algo significativo.
 
 las Llaves serian los colores blanco y negro, las llaves negras indican, que 
-el codigo está correcto en el luegar y color, las llaves blancas indican 
+el codigo está correcto en el lugar y color, las llaves blancas indican 
 color correcto pero puesto equivocado.
 
