@@ -77,5 +77,87 @@ class Game
   end
 end
 
-new_game = Game.new(12, 6)
-new_game.play
+class PCGuesser
+  def initialize
+    @turns = 13
+    @colors = [1, 2, 3, 4, 5, 6].freeze
+    @codes = @colors.to_a.repeated_permutation(4).to_a
+    @guess = []
+    @p_code = []
+    @pegs = []
+  end
+
+  def play
+    turn = 1
+    while turn != @turns
+      pc_guess(turn)
+      turn += 1
+    end
+  end
+
+  def filter_codes
+    @codes.select! do |item|
+      check_pegs(item, @guess) == @pegs
+    end
+  end
+
+  def pc_guess(turn)
+    if turn == 1
+      intro
+      p "turn #{turn}"
+      p @guess = [1, 1, 2, 2]
+      p @pegs = check_pegs(@p_code, @guess)
+    end
+    if turn > 1
+      p "turn #{turn}"
+      filter_codes
+      p @guess = @codes.first
+      p @pegs = check_pegs(@p_code, @guess)
+    end
+    gameover(turn)
+  end
+
+  def intro
+    p 'Hello, What would be your code? 1, 2, 3, 4, 5, 6 !'
+    @p_code = gets.chomp.split('').map(&:to_i)
+  end
+
+  def gameover(turn)
+    if turn == 12
+      p "YOU WONNNN !!! The pc was't able to crack your code!"
+      sleep(5)
+      exit
+    elsif check_pegs(@p_code, @guess)[:black] == 4
+      p "PC won at turn #{turn}, the code was #{@guess}"
+      sleep(5)
+      exit
+    end
+  end
+
+  def check_pegs(code, guess)
+    pegs = { black: 0, white: 0 }
+    guess.each_with_index do |item, i|
+      code.each_with_index do |element, index|
+        pegs[:black] += 1 if item == element && i == index
+      end
+      pegs[:white] += 1 if code.include?(item)
+    end
+    pegs[:white] -= pegs[:black]
+    pegs
+  end
+end
+
+def choose
+  p "Hello, This is mastermind Would You like to be the codebreaker(B) or the codemaker(M)?"
+  choice = gets.chomp.downcase
+  if choice == "b"
+    new_game = Game.new(12, 6)
+    new_game.play
+  elsif choice == 'm'
+    new_game = PCGuesser.new
+    new_game.play
+  end
+end
+
+choose
+

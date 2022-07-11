@@ -20,3 +20,17 @@ las Llaves serian los colores blanco y negro, las llaves negras indican, que
 el codigo está correcto en el lugar y color, las llaves blancas indican 
 color correcto pero puesto equivocado.
 
+
+Ok, Segunda parte del Assigment es crear el codigo para definir si el jugador quiere
+ser el creador del codigo o adivinarlo, ahora la cuestión es crear el codigo
+para hacer que la pc adivine un codigo creado por el jugador
+
+
+ok, El Pc guess siempre empieza con el 0000, una vez el jugador dictamine
+cuantas blancas y negras hay, si no hay negras ni blancas, Eliminas completamente
+ese color de los proximos colores ha designar, Si hay negras entonces sabes
+que  ese color existe y dejas ese color en las proximas por cada negra que haya
+ejemplo: codigo [0,1,4,0] guess = [0,0,0,0] entonces negras tendriamos 2 dejariamos
+2 zeros y aumentarios por 1 los otros numeros. guess = [0,0,1,1] aqui tendriamos 
+ 1 negra y 3 blancas y asi sucesivamente hasta llegar probablemente a tener 4 blancas
+en ese caso solo tendriamos que cambiar el order hasta tener las 4 negras
